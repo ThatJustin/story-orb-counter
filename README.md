@@ -16,7 +16,7 @@ Chronicles' Total Orb Count:  	**467**
 ## Setup
 1) Download or clone repository. 
 2) Download [chromedriver](https://chromedriver.chromium.org/downloads).
-3) Place it in the project directory or wherever you prefer. (By default it  looks for for chromedriver.exe in story-orb-counter/chromedriver/) 
+3) Place it in the project directory or wherever you prefer. (By default it looks for chromedriver.exe in story-orb-counter/chromedriver/) 
 	* If you place chromedriver.exe anywhere else, please modify `main.py` line 9 for your location.
 
 ## Usage
