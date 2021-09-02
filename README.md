@@ -3,14 +3,14 @@
 Gets the total and individual spirit orb count from stories (main story, side story, TYBW story, sub story, event, chronicles). Data is parsed from https://bbs-simulator.com/story.
 
 ## Orb Count
-If you just want to see the orb count instead of running it:
+If you just want to see the orb count instead of running it:\
 Last Updated (MM/DD/YYYY): **9/2/2021**
 
-Main Story Total Orb Count:  **3110** 
-Side Story Total Orb Count:  **5248** 
-TYBW Story Total Orb Count:  **586**
-Sub Story Total Orb Count:  **2612**
-Event Total Orb Count:  **25278**
+Main Story Total Orb Count:  **3110** \
+Side Story Total Orb Count:  **5248** \
+TYBW Story Total Orb Count:  **586**\
+Sub Story Total Orb Count:  **2612**\
+Event Total Orb Count:  **25278**\
 Chronicles' Total Orb Count:  	**467**
 
 ## Setup
