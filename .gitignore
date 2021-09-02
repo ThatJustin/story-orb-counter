@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#IDEA Folder
+.idea/
+
+# Project Specific
+chromedriver/chromedriver.exe
