@@ -29,7 +29,7 @@ Chronicles' Total Orb Count:  	**467**
   ```
 
 ## Dependencies
-* BeautifulSoup 4  4.9.3
+* BeautifulSoup4  4.9.3
 * Selenium 3.141.0
 
 ## Credits
