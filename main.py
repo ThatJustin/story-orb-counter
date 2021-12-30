@@ -1,4 +1,4 @@
-from bs4 import BeautifulSoup, Tag
+from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
@@ -6,7 +6,10 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 
 url = 'https://bbs-simulator.com/story'
-driver = webdriver.Chrome('./chromedriver/chromedriver.exe')
+chromedriver_path = './chromedriver/chromedriver.exe'
+orb_img_path = "https://bucket.bbs-simulator.com/item/0017-ce1df5d4-c569-4794-b260-3a39d5e13891.png"
+
+driver = webdriver.Chrome(chromedriver_path)
 driver.get(url)
 delay = 2  # in seconds
 try:
@@ -51,7 +54,7 @@ def parse_orb_count(card_body, category_name, card_length):
     """
     index = card_length if (card_length > 0) else 0
     for orb_info in card_body.find_all("img", {
-        "src": "https://bucket.bbs-simulator.com/item/0017-ce1df5d4-c569-4794-b260-3a39d5e13891.png"}):
+        "src": orb_img_path}):
         if orb_info is not None:
             orb_count = int(orb_info.parent.span.text)
             orb_information[category_name][index][1] = orb_count
@@ -86,13 +89,10 @@ def change_story_tab(tab_index):
     soup = BeautifulSoup(driver.page_source, "html.parser")
 
 
-def get_tab_panel(tab_index):
+def get_tab_panel():
     tab_content_div = soup.find("div", {"class": "tab-content"})
-    tab_content_div: Tag
-    for index, tab_panel_div in enumerate(tab_content_div):
-        if index == tab_index:
-            return tab_panel_div
-    return None
+    tab_page_div = tab_content_div.find("div", {"class": "fade nav-tabs-dark tab-pane active show"})
+    return tab_page_div
 
 
 def get_card_length(card_body):
@@ -116,7 +116,9 @@ def parse_story():
     story_tab_count = get_story_tab_count()
 
     for index in range(0, story_tab_count):
-        tab_panel_div = get_tab_panel(index)
+        if index > 0:
+            change_story_tab(index)
+        tab_panel_div = get_tab_panel()
         if tab_panel_div is None:
             return
         category_div = tab_panel_div.find("div", {"class": "row"})
@@ -133,7 +135,7 @@ def print_information():
     Prints out orb_information dictionary.
     :return: None
     """
-    story_orb_totals_lst = [0] * 6
+    story_orb_totals_lst = [0] * get_story_tab_count()
     index = 0
     for category_type_key, category_type_value in orb_information.items():
         print(category_type_key, '\n')
@@ -163,16 +165,13 @@ def parse_tab(index, category_name, card_body, total_card_length, new_card_index
       """
     if total_card_length == new_card_index:
         return
-    if index > 0:
-        change_story_tab(index)
     visible_card_length = len(card_body.find_all("div", {"class": "card"}, recursive=False))
 
     parse_story_name(card_body, category_name, new_card_index)
     parse_orb_count(card_body, category_name, new_card_index)
 
     click_next_page(index)
-
-    tab_panel_div = get_tab_panel(index)
+    tab_panel_div = get_tab_panel()
     card_body = tab_panel_div.find("div", {"class": "w-100 card-body"})
 
     parse_tab(index, category_name, card_body, total_card_length,
