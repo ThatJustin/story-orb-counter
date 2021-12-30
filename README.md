@@ -4,14 +4,16 @@ Gets the total and individual spirit orb count from stories (main story, side st
 
 ## Orb Count
 If you just want to see the orb count instead of running it:\
-Last Updated (MM/DD/YYYY): **10/11/2021**
+Last Updated (MM/DD/YYYY): **12/29/2021**
 
 Main Story Total Orb Count:  **3110** \
-Side Story Total Orb Count:  **5248** \
+Side Story Total Orb Count:  **5498** \
 TYBW Story Total Orb Count:  **586**\
-Sub Story Total Orb Count:  **2672**\
-Event Total Orb Count:  **25670**\
+Sub Story Total Orb Count:  **2839**\
+Event Total Orb Count:  **26541**\
 Chronicles' Total Orb Count:  	**467**
+
+Note: Orb count does not include any orbs from obtainable characters during their quests.
 
 ## Setup
 1) Download or clone repository. 
